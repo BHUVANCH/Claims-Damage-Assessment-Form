@@ -1,59 +1,81 @@
-# ClaimsWorkspace
+# Claims Workspace
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.4.
+A modular Angular application built using Micro Frontend architecture with Module Federation.
 
-## Development server
+## Project Structure
 
-To start a local development server, run:
+This workspace contains multiple applications and a shared library:
 
-```bash
-ng serve
+host-app: Main container application
+mfe1: Micro Frontend 1
+mfe2: Micro Frontend 2
+shared-data: Shared library containing common functionality
+
+## Prerequisites
+
+Node.js (LTS version recommended)
+npm (comes with Node.js)
+Angular CLI
+
+## Installation
+
+
+# Install dependencies
+npm install
+## Development
+
+### Running Individual Applications
+bash
+# Start the host application
+npm run serve:host
+
+# Start Micro Frontend 1
+npm run serve:mfe1
+
+# Start Micro Frontend 2
+npm run serve:mfe2
+### Running All Applications
+
+To start all applications concurrently:
+bash
+npm run serve:all
+This command will:
+1. Build the shared library
+2. Start the host application
+3. Start both micro frontends
+
+### Building
+bash
+# Build individual applications
+ng build host-app
+ng build mfe1
+ng build mfe2
+
+# Build shared library
+npm run build:shared
+## Testing
+
+### Running Tests for Individual Applications
+bash
+# Test host application
+npm run test:host
+
+# Test Micro Frontend 1
+npm run test:mfe1
+
+# Test Micro Frontend 2
+npm run test:mfe2
+
+# Test shared library
+npm run test:shared
+### Running All Tests
+
+To run all tests concurrently:
+bash
+npm run test:all
+## Development Server
+
+The development server uses Module Federation for local development. To start the development server with all applications:
+bash
+npm run run:all
 ```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
