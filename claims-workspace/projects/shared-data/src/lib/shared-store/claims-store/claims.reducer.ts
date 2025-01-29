@@ -73,27 +73,3 @@ on(ClaimsActions.updateClaimStatus, (state) => ({
 
 );
 
-//   on(deleteClaim, (state, { id }) => ({
-//     ...state,
-//      claims: state.claims.filter((claim)=> claim.claimId !== id) 
-//  })),
-//   on(updateClaim, (state, { content }) => {
-//     let claimIndex = state.claims.findIndex((claim)=> (claim.claimId === content.claimId));
-//     let updatedClaims = JSON.parse(JSON.stringify(state.claims));
-//     if(claimIndex !== -1){
-//           updatedClaims[claimIndex] = content;
-//     }else{
-//         updatedClaims.push(content);
-//     }
-//     return  { 
-//         ...state,
-//         claims:  updatedClaims
-//      }
-//     //  state.claims.map((claim)=> {
-//     //     if(claim.claimId === content.claimId){
-//     //         return {...claim, ...content}
-//     //     }else{
-//     //         claim
-//     //     }
-//     //  })
-//   }),

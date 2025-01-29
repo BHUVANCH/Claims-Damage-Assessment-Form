@@ -79,9 +79,9 @@ describe('Claims Reducer', () => {
     });
   
     it('should select a claim on selectClaim action', () => {
-      const action = ClaimsActions.selectClaim({ claimId: "2" });
+      const action = ClaimsActions.selectClaim({ claimId: "233" });
       const state = claimsReducer(initialClaimsState, action);
-      expect(state.selectedClaimId).toEqual("2");
+      expect(state.selectedClaimId).toEqual("233");
     });
   
   });
