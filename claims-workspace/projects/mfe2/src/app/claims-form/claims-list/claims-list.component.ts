@@ -20,9 +20,6 @@ export class ClaimsListComponent implements OnInit{
 
    ngOnInit(): void {
       this.store.dispatch(loadClaims());
-      this.claims$.subscribe((claims)=>{
-        console.log(claims);
-      });
    }
     
 

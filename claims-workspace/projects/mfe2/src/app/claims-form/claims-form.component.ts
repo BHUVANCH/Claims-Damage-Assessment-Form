@@ -119,8 +119,6 @@ export class ClaimsFormComponent implements OnInit,OnDestroy{
         reader.onload = (e) => {
           if (typeof e.target?.result === 'string') {
             this.imagePreviews.push(e.target.result);
-            console.log(this.imageFiles);
-            console.log(this.imagePreviews);
           }
         };
         reader.readAsDataURL(file);

@@ -10,19 +10,10 @@ import { loadClaims, selectClaims, selectCount } from '@shared';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
-  private store = inject(Store);
-  count$: Observable<number> = this.store.select(selectCount);
-
-      claims$ = this.store.select(selectClaims);
-  
+export class HomeComponent {  
       constructor() {
       }
   
      ngOnInit(): void {
-        this.store.dispatch(loadClaims());
-        this.claims$.subscribe((claims)=>{
-          console.log(claims);
-        });
      }
 }

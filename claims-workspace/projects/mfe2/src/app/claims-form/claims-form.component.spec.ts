@@ -96,7 +96,6 @@ describe('ClaimsFormComponent', () => {
 
   it('should trigger the correct action when form is valid and submitted', fakeAsync(() => {
     component.form.patchValue(initialState.claims[0]);
-    component.imageFiles = [];
     component.onSubmit();
     tick();
     flush(); 
@@ -113,7 +112,6 @@ describe('ClaimsFormComponent', () => {
 
   it('should reset form after successful submission', fakeAsync(() => {
     component.form.patchValue(initialState.claims[0]);
-    component.imageFiles = [];
     component.onSubmit();
     tick();
     flush();
