@@ -1,0 +1,37 @@
+<div class="mt-8">
+  <h2 class="text-xl font-semibold mb-4">Recent Claims</h2>
+  <div class="overflow-x-auto">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead class="bg-gray-50">
+        <tr>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Claim ID</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Policyholder</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cost</th>
+        </tr>
+      </thead>
+
+      <tbody class="bg-white divide-y divide-gray-200">
+        <tr *ngFor="let claim of claims$ | async">
+          <td class="px-6 py-4 whitespace-nowrap">{{claim.claimId}}</td>
+          <td class="px-6 py-4 whitespace-nowrap">{{claim.policyHolderName}}</td>
+          <td class="px-6 py-4 whitespace-nowrap">{{claim.dateOfIncident | date}}</td>
+          <td class="px-6 py-4 whitespace-nowrap">{{claim.damageType}} - {{claim.damageSubType}}</td>
+          <td class="px-6 py-4 whitespace-nowrap">
+                <select 
+                  (change)="OnStatusChange(claim.claimId,$event)"
+                  [ngModel]="claim.status"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                  <option *ngFor="let status of statuses" [value]="status">{{status}}</option>
+                </select>
+
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap">{{claim.estimatedRepairCost | currency: 'EUR'}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
