@@ -48,44 +48,37 @@ export class ClaimsFormComponent implements OnInit,OnDestroy{
   onSubmit(): void {
     if (this.form.valid) {
       const formValue = this.form.value;
-      console.log(formValue);
   
-      // Convert image files to base64 strings using RxJS
       from(this.imageFiles).pipe(
-        // Use concatMap to process each file sequentially (can be replaced with mergeMap for parallel)
         concatMap((file: File) => {
           return new Observable<string>((observer) => {
             const reader = new FileReader();
             reader.onloadend = () => {
-              observer.next(reader.result as string); // Emit base64 string
+              observer.next(reader.result as string); 
               observer.complete();
             };
             reader.onerror = (error) => {
-              observer.error(error); // Handle error
+              observer.error(error);
             };
             reader.readAsDataURL(file);
           });
         }),
-        // Collect all results into an array (this step waits until all files are processed)
         toArray(),
-        // Optionally catch errors during the file reading process
         catchError((error) => {
           console.error('Error during file conversion:', error);
-          return []; // Handle errors (return an empty array in case of error)
+          return []; 
         }),
         tap((images) => {
-          // Dispatch the createClaim action with the images
           this.store.dispatch(
             createClaim({
               claim: {
                 ...formValue,
-                images, // images is an array of base64 strings
+                images, 
                 dateOfIncident: new Date(formValue.dateOfIncident),
               },
             })
           );
   
-          // Reset form
           this.form.reset({
             status: ClaimStatus.PENDING,
           });
@@ -127,6 +120,7 @@ export class ClaimsFormComponent implements OnInit,OnDestroy{
           if (typeof e.target?.result === 'string') {
             this.imagePreviews.push(e.target.result);
             console.log(this.imageFiles);
+            console.log(this.imagePreviews);
           }
         };
         reader.readAsDataURL(file);
