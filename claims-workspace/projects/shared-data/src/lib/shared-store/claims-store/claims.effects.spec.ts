@@ -53,13 +53,10 @@ describe('ClaimsEffects', () => {
 
   describe('loadClaims$', () => {
     it('should return loadClaimsSuccess with claims on successful load', (done) => {
-      // Set up the action
       actions$ = of(ClaimsActions.loadClaims());
       
-      // Mock the service call
       claimsServiceSpy.getClaims.and.returnValue(of(mockClaims));
 
-      // Test the effect
       effects.loadClaims$.subscribe(action => {
         expect(action).toEqual(ClaimsActions.loadClaimsSuccess({ claims: mockClaims }));
         done();
